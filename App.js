@@ -1,20 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StatusBar, View } from 'react-native';
+import HomeScreen from './Screens/HomeScreen';
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <HomeScreen isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
